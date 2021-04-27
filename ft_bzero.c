@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 16:05:41 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/28 00:56:48 by echerell         ###   ########.fr       */
+/*   Created: 2021/04/28 01:00:31 by echerell          #+#    #+#             */
+/*   Updated: 2021/04/28 01:09:36 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_bzero(void *ptr, size_t n)
 {
-	char	*sub;
 	size_t	i;
-	size_t	k;
 
 	i = 0;
-	k = 0;
-	sub = (char *)malloc(len * sizeof(char) + 1);
-	if (!s || !sub)
-		return (NULL);
-	while (s[i])
+	while (i < n)
 	{
-		if (i >= start && k < len)
-		{
-			sub[k] = s[i];
-			k++;
-		}
+		*(unsigned char *)(ptr + i) = '\0';
 		i++;
 	}
-	sub[k] = '\0';
-	return (sub);
 }

@@ -6,11 +6,11 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:37:52 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:15:40 by echerell         ###   ########.fr       */
+/*   Updated: 2021/04/27 20:44:53 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+/*#include <stdlib.h>
 
 static	int	length(const char *s)
 {
@@ -46,3 +46,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 		}
 	}
 }
+*/

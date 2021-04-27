@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 16:05:41 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/28 00:56:48 by echerell         ###   ########.fr       */
+/*   Created: 2021/04/28 01:36:06 by echerell          #+#    #+#             */
+/*   Updated: 2021/04/28 01:44:10 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	char	*sub;
 	size_t	i;
-	size_t	k;
 
-	i = 0;
-	k = 0;
-	sub = (char *)malloc(len * sizeof(char) + 1);
-	if (!s || !sub)
+	if (!dest && !src)
 		return (NULL);
-	while (s[i])
+	i = 0;
+	while (i < n && *(unsigned char *)src != (unsigned char)c)
 	{
-		if (i >= start && k < len)
-		{
-			sub[k] = s[i];
-			k++;
-		}
+		*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
 		i++;
 	}
-	sub[k] = '\0';
-	return (sub);
+	return (dest);
 }
