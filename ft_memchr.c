@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:00:31 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/30 19:27:43 by echerell         ###   ########.fr       */
+/*   Created: 2021/04/30 21:18:33 by echerell          #+#    #+#             */
+/*   Updated: 2021/04/30 21:32:52 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_bzero(void *ptr, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < n)
+	while(i < n)
 	{
-		*(unsigned char *)(ptr + i) = '\0';
+		if (*(unsigned char *)(s + i) == (unsigned char)c)
+			return ((void *)(s + i));
 		i++;
 	}
+	return (NULL);
 }
