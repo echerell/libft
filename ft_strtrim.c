@@ -6,44 +6,51 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:37:52 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/27 20:44:53 by echerell         ###   ########.fr       */
+/*   Updated: 2021/05/04 21:03:19 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdlib.h>
+#include "libft.h"
 
-static	int	length(const char *s)
+static	int	ft_check_c(char c, char const *set)
 {
-	int	n;
+	size_t	i;
 
-	n = 0;
-	while (s[n])
-		n++;
-	return (n);
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trim;
-	int		i;
-	int		k;
+	size_t	start;
+	size_t	k;
+	size_t	end;
 
-	i = 0;
-	trim = (char *)malloc(length(s1) * sizeof(char));
-	if (!s1 || !trim)
+	if (!s1 || !set)
 		return (NULL);
-	while (s1[i])
+	start = 0;
+	while (s1[start] && set && ft_check_c(s1[start], set))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && set && ft_check_c(s1[end - 1], set))
+		end--;
+	trim = (char *)malloc((end - start + 1) * sizeof(char));
+	if (!trim)
+		return (NULL);
+	k = 0;
+	while (start < end)
 	{
-		k = 0;
-		while (set[k])
-		{
-			if (s1[i] == set[k])
-			{
-				i++;
-				k = 0;
-			}
-			k++;
-		}
+		trim[k] = s1[start];
+		k++;
+		start++;
 	}
+	trim[k] = '\0';
+	return (trim);
 }
-*/

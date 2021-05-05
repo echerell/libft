@@ -6,32 +6,24 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:07:04 by echerell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:08:57 by echerell         ###   ########.fr       */
+/*   Updated: 2021/05/04 20:07:22 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static	int	length(const char *s)
-{
-	int	n;
-
-	n = 0;
-	while (s[n])
-		n++;
-	return (n);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*cat;
-	int		i;
-	int		n2;
+	size_t	i;
+	size_t	n2;
 
 	i = 0;
 	n2 = 0;
-	cat = (char *)malloc((length(s1) + length(s2)) * sizeof(char));
-	if (!s1 || !s2 || !cat)
+	if (!s1 || !s2)
+		return (NULL);
+	cat = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!cat)
 		return (NULL);
 	while (s1[i])
 	{

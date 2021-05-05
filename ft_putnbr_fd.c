@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/01 23:18:39 by echerell          #+#    #+#             */
-/*   Updated: 2021/05/04 20:02:12 by echerell         ###   ########.fr       */
+/*   Created: 2021/05/05 17:02:05 by echerell          #+#    #+#             */
+/*   Updated: 2021/05/05 17:33:20 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	void	*ptr;
+	unsigned int	rec;
 
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		rec = (unsigned int)(-1 * n);
+	}
+	else
+		rec = (unsigned int)n;
+	if (rec > 1)
+	{
+		ft_putnbr_fd(rec / 10, fd);
+		ft_putchar_fd(rec % 10 + '0', fd);
+	}
+	else
+		ft_putchar_fd(rec % 10 + '0', fd);
 }
