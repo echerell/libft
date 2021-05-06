@@ -1,2 +1,2 @@
-#libft
-##School 21 libft project
+# libft
+## School 21 libft project
