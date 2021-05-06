@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strlenc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/06 00:05:30 by echerell          #+#    #+#             */
-/*   Updated: 2021/05/06 20:48:09 by echerell         ###   ########.fr       */
+/*   Created: 2021/05/06 22:41:00 by echerell          #+#    #+#             */
+/*   Updated: 2021/05/06 22:43:23 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-void	ft_lstiter(t_list *lst, void(*f)(void *))
+size_t	ft_strlenc(char const *s, char c)
 {
-	t_list	*current;
+	size_t	i;
 
-	if (f && lst)
-	{
-		current = lst;
-		while (current->next)
-		{
-			f(current->content);
-			current = current->next;
-		}
-		f(current->content);
-	}
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
 }

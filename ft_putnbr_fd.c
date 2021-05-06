@@ -6,7 +6,7 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:02:05 by echerell          #+#    #+#             */
-/*   Updated: 2021/05/05 17:33:20 by echerell         ###   ########.fr       */
+/*   Updated: 2021/05/06 20:55:43 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	else
 		rec = (unsigned int)n;
-	if (rec > 1)
+	if (rec >= 10)
 	{
 		ft_putnbr_fd(rec / 10, fd);
 		ft_putchar_fd(rec % 10 + '0', fd);

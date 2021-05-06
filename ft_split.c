@@ -6,7 +6,7 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:06:01 by echerell          #+#    #+#             */
-/*   Updated: 2021/05/05 21:44:13 by echerell         ###   ########.fr       */
+/*   Updated: 2021/05/06 22:43:12 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ static	size_t	ft_count_str(char const *s, char c)
 		}
 	}
 	return (n);
-}
-
-static	size_t	ft_count_c(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
 }
 
 static	size_t	ft_make_str(char *str, char const *s, size_t k, char c)
@@ -80,14 +70,29 @@ static	void	ft_free_all(char **strs)
 	free(strs);
 }
 
+static	char	**ft_check_zero(char const *s)
+{
+	char	**strs;
+
+	if (!s)
+		return (NULL);
+	else
+	{
+		strs = (char **)malloc(2 * sizeof(char *));
+		strs[0] = NULL;
+		strs[1] = NULL;
+	}
+	return (strs);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	k;
 	char	**strs;
 
-	if (!s)
-		return (NULL);
+	if (!s || s[0] == '\0')
+		return (ft_check_zero(s));
 	strs = (char **)malloc((ft_count_str(s, c) + 2) * sizeof(char *));
 	if (!strs)
 		return (NULL);
@@ -98,7 +103,7 @@ char	**ft_split(char const *s, char c)
 		k++;
 	while (i < ft_count_str(s, c) + 1)
 	{
-		strs[i] = (char *)malloc((ft_count_c(s + k, c) + 1) * sizeof(char));
+		strs[i] = (char *)malloc((ft_strlenc(s + k, c) + 1) * sizeof(char));
 		if (!strs[i])
 		{
 			ft_free_all(strs);
