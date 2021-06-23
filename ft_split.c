@@ -6,7 +6,7 @@
 /*   By: echerell <echerell@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:06:01 by echerell          #+#    #+#             */
-/*   Updated: 2021/05/06 22:43:12 by echerell         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:45:57 by echerell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ static	char	**ft_check_zero(char const *s)
 		return (NULL);
 	else
 	{
-		strs = (char **)malloc(2 * sizeof(char *));
+		strs = (char **)malloc(sizeof(char *));
 		strs[0] = NULL;
-		strs[1] = NULL;
 	}
 	return (strs);
 }
